@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: result
+spec:
+  selector:
+    matchLabels:
+      app: result
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: result
+    spec:
+      containers:
+      - name: result
+        image: epitechcontent/t-dop-600-result:k8s
+        resources:
+          limits:
+            memory: "128Mi"
+        env:
+        - name: POSTGRES_HOST
+          value: "jspquoimettreici"
+        - name: POSTGRES_PORT
+          value: "5432"
+        - name: POSTGRES_DB
+          value: "clusterization"
+        - name: POSTGRES_USER
+          value: "bW9udHk="
+        - name: POSTGRES_PASSWORD
+          value: "bW9udHk="
+        ports:
+          - containerPort: 80
+            name: result
+            protocol: TCP
+      restartPolicy: Always
