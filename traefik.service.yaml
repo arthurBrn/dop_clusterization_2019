@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik
+  labels:
+    app: traefik
+spec:
+  ports:
+  - port: 80
+    name: traefik
+    targetPort: 80
+  selector:
+    app: traefik
+  type: ClusterIP    
