@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
     name: postgres
 spec:
-    replicas: 0
+    replicas: 1
     selector:
         matchLabels:
             app: postgres
@@ -31,4 +31,4 @@ spec:
                     secretName: postgres-env-secret
                 - name: postgredb
                   persistentVolumeClaim:
-                    claimName: postgres-volume-PersistentVolumeClaim
+                    claimName: postgres-persistent-volume-claim
