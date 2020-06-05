@@ -22,11 +22,13 @@ spec:
                     - configMapRef:
                         name: postgres-config
                   volumeMounts:
-                    - mountPath: /var/lib/postgresql/data
-                      name: postgredb
+                    - name: postgredb
+                      mountPath: /var/lib/postgresql/data
+                    - name: postgres-secret-volume
+                      mountPath: /etc/secret-volume
             restartPolicy: Always
             volumes:
-                - name: postgres-secret
+                - name: postgres-secret-volume
                   secret:
                     secretName: postgres-env-secret
                 - name: postgredb
