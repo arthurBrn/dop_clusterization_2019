@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poll
+spec:
+  selector:
+    matchLabels:
+      app: poll
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: poll
+    spec:
+      containers:
+      - name: poll
+        image: epitechcontent/t-dop-600-poll:k8s
+        resources:
+          limits:
+            memory: "128Mi"
+        env:
+        - name: REDIS_HOST
+          value: "jspquoimettreici"
+        ports:
+          - containerPort: 80
+            name: poll
+            protocol: TCP
+      restartPolicy: Always
