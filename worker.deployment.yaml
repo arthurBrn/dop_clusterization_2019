@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker
+spec:
+  selector:
+    matchLabels:
+      app: worker
+  template:
+    metadata:
+      labels:
+        app: worker
+    spec:
+      containers:
+      - name: worker
+        image: epitechcontent/t-dop-600-worker:k8s
+        resources:
+          limits:
+            memory: "256Mi"
+        env:
+        - name: REDIS_HOST
+          value: "jspquoimettreici"
+        - name: POSTGRES_HOST
+          value: "jspquoimettreici"
+        - name: POSTGRES_PORT
+          value: "5432"
+        - name: POSTGRES_DB
+          value: "clusterization"
+        - name: POSTGRES_USER
+          value: "bW9udHk="
+        - name: POSTGRES_PASSWORD
+          value: "bW9udHk="
+      restartPolicy: Always
